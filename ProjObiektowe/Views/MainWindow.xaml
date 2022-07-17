@@ -1,0 +1,69 @@
+﻿<Window x:Class="ProjObiektowe.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewModel ="clr-namespace:ProjObiektowe.ViewModels"
+        xmlns:local="clr-namespace:ProjObiektowe"
+        mc:Ignorable="d"
+        Title="RecipeBook" Height="800" Width="1000">
+    <Window.DataContext>
+        <viewModel:MainWindowViewModel/>
+    </Window.DataContext>
+    <Border Background="#a3f0ac">
+        <Grid>
+
+            <TextBlock Grid.Column="0"
+                       Grid.Row="0"
+                       Text="RecipeBook"
+                       FontSize="25"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       Foreground="#020f09"/>
+            <StackPanel Grid.Column="0"
+                        Grid.Row="1">
+                <RadioButton Content="Recipes"
+                             
+                             Height="70"
+                             Foreground="#020f09"
+                             FontSize="14"
+                             IsChecked="True"
+                             Command="{Binding RecipeViewCommand}"
+                              />
+                <RadioButton Content="Add Recipe"
+                             Height="50"
+                             Foreground="#020f09"
+                             FontSize="14"
+                             Command="{Binding AddRecipeViewCommand}"
+                             />
+                
+            </StackPanel>
+
+            <Border Grid.Column="1"
+                    Grid.Row="0"
+                    Grid.RowSpan="2"
+                    Background="#081a12">
+                <Border
+                    Margin="30"
+                    Padding="10"
+                    CornerRadius="20"
+                    Background="#a3f0ac">
+                    <ContentControl 
+                            Content="{Binding CurrentView}"/>
+                </Border>
+            </Border>
+
+
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="150"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="250"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+        </Grid>
+    </Border>
+</Window>
